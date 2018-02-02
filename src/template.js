@@ -2,23 +2,23 @@ QueryBuilder.templates.group = '\
 <div id="{{= it.group_id }}" class="rules-group-container"> \
   <div class="rules-group-header"> \
     <div class="btn-group pull-right group-actions"> \
-      <button type="button" class="btn btn-xs btn-success" data-add="rule"> \
-        <i class="material-icons">{{= it.icons.add_rule }}</i> {{= it.translate("add_rule") }} \
+      <button type="button" class="btn btn-xs btn-primary" data-add="rule"> \
+        <i class="material-icons">{{= it.icons.add_rule }}</i> <span class="btn-label">{{= it.translate("add_rule") }}</span> \
       </button> \
       {{? it.settings.allow_groups===-1 || it.settings.allow_groups>=it.level }} \
-        <button type="button" class="btn btn-xs btn-success" data-add="group"> \
-          <i class="material-icons">{{= it.icons.add_group }}</i> {{= it.translate("add_group") }} \
+        <button type="button" class="btn btn-xs btn-primary" data-add="group"> \
+          <i class="material-icons">{{= it.icons.add_group }}</i> <span class="btn-label">{{= it.translate("add_group") }}</span>  \
         </button> \
       {{?}} \
       {{? it.level>1 }} \
         <button type="button" class="btn btn-xs btn-danger" data-delete="group"> \
-          <i class="material-icons">{{= it.icons.remove_group }}</i> {{= it.translate("delete_group") }} \
+          <i class="material-icons">{{= it.icons.remove_group }}</i> <span class="btn-label">{{= it.translate("delete_group") }}</span> \
         </button> \
       {{?}} \
     </div> \
     <div class="btn-group group-conditions"> \
       {{~ it.conditions: condition }} \
-        <label class="btn btn-xs btn-primary"> \
+        <label class="btn btn-xs btn-info"> \
           <input type="radio" name="{{= it.group_id }}_cond" value="{{= condition }}"> {{= it.translate("conditions", condition) }} \
         </label> \
       {{~}} \
@@ -37,7 +37,7 @@ QueryBuilder.templates.rule = '\
   <div class="rule-header"> \
     <div class="btn-group pull-right rule-actions"> \
       <button type="button" class="btn btn-xs btn-danger" data-delete="rule"> \
-        <i class="material-icons">{{= it.icons.remove_rule }}</i> {{= it.translate("delete_rule") }} \
+        <i class="material-icons">{{= it.icons.remove_rule }}</i> <span class="btn-label">{{= it.translate("delete_rule") }}</span> \
       </button> \
     </div> \
   </div> \
@@ -67,6 +67,25 @@ QueryBuilder.templates.filterSelect = '\
   {{? optgroup !== null }}</optgroup>{{?}} \
 </select>';
 
+// Material
+// QueryBuilder.templates.filterSelect = '\
+// {{ var optgroup = null; }} \
+// <md-select ng-model="{{= it.rule.id }}_filter" class="form-control" aria-label="{{= it.rule.id }}_filter" name="{{= it.rule.id }}_filter"> \
+//   {{? it.settings.display_empty_filter }} \
+//     <md-option value="-1">{{= it.settings.select_placeholder }}</md-option> \
+//   {{?}} \
+//   {{~ it.filters: filter }} \
+//     {{? optgroup !== filter.optgroup }} \
+//       {{? optgroup !== null }}</optgroup>{{?}} \
+//       {{? (optgroup = filter.optgroup) !== null }} \
+//         <md-optgroup label="{{= it.translate(it.settings.optgroups[optgroup]) }}"> \
+//       {{?}} \
+//     {{?}} \
+//     <md-option value="{{= filter.id }}">{{= it.translate(filter.label) }}</md-option> \
+//   {{~}} \
+//   {{? optgroup !== null }}</md-optgroup>{{?}} \
+// </md-select>';
+
 QueryBuilder.templates.operatorSelect = '\
 {{? it.operators.length === 1 }} \
 <span> \
@@ -86,6 +105,27 @@ QueryBuilder.templates.operatorSelect = '\
   {{~}} \
   {{? optgroup !== null }}</optgroup>{{?}} \
 </select>';
+
+// Material
+// QueryBuilder.templates.operatorSelect = '\
+// {{? it.operators.length === 1 }} \
+// <span> \
+// {{= it.translate("operators", it.operators[0].type) }} \
+// </span> \
+// {{?}} \
+// {{ var optgroup = null; }} \
+// <md-select class="form-control {{? it.operators.length === 1 }}hide{{?}}" ng-model="{{= it.rule.id }}_operator" aria-label="{{= it.rule.id }}_operator" name="{{= it.rule.id }}_operator"> \
+//   {{~ it.operators: operator }} \
+//     {{? optgroup !== operator.optgroup }} \
+//       {{? optgroup !== null }}</md-optgroup>{{?}} \
+//       {{? (optgroup = operator.optgroup) !== null }} \
+//         <md-optgroup label="{{= it.translate(it.settings.optgroups[optgroup]) }}"> \
+//       {{?}} \
+//     {{?}} \
+//     <md-option value="{{= operator.type }}">{{= it.translate("operators", operator.type) }}</md-option> \
+//   {{~}} \
+//   {{? optgroup !== null }}</md-optgroup>{{?}} \
+// </md-select>';
 
 /**
  * Returns group's HTML
@@ -220,13 +260,17 @@ QueryBuilder.prototype.getRuleInput = function(rule, value_id) {
 
     if (typeof filter.input == 'function') {
         h = filter.input.call(this, rule, name);
-    }
-    else {
+    } else {
         switch (filter.input) {
             case 'radio':
+            Utils.iterateOptions(filter.values, function(key, val) {
+                h += '<label class="radio inline"' + c + '><input type="' + filter.input + '" name="' + name + '" value="' + key + '"> <span>' + val + '</span></label> ';
+            });
+            break;
+            
             case 'checkbox':
                 Utils.iterateOptions(filter.values, function(key, val) {
-                    h += '<label' + c + '><input type="' + filter.input + '" name="' + name + '" value="' + key + '"> ' + val + '</label> ';
+                    h += '<label class="checkbox inline"' + c + '><input type="' + filter.input + '" name="' + name + '" value="' + key + '"> <span>' + val + '</span></label> ';
                 });
                 break;
 
