@@ -1,5 +1,5 @@
 /*!
- * jQuery QueryBuilder 8.0.0
+ * jQuery QueryBuilder 8.1.0
  * Locale: Hebrew (he)
  * Author: Kfir Stri https://github.com/kfirstri
  * Licensed under MIT (http://opensource.org/licenses/MIT)

@@ -1,3 +1,8 @@
+/*!
+ * jQuery QueryBuilder 8.1.0
+ * Copyright 2014-2018 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
+ * Licensed under MIT (http://opensource.org/licenses/MIT)
+ */
 /*
 * jQuery QueryBuilder Elasticsearch 'bool' query support
 * https://github.com/mistic100/jQuery-QueryBuilder
