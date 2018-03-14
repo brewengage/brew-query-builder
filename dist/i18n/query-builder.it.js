@@ -1,5 +1,5 @@
 /*!
- * jQuery QueryBuilder 8.1.0
+ * jQuery QueryBuilder 8.2.0
  * Locale: Italian (it)
  * Author: davegraziosi
  * Licensed under MIT (http://opensource.org/licenses/MIT)
