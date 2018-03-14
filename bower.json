@@ -9,7 +9,6 @@
   "description": "jQuery plugin for user friendly query/filter creator",
   "main": [
     "dist/js/query-builder.js",
-    "dist/js/query-builder-elasticsearch.js",
     "dist/css/query-builder.default.css"
 
   ],
