@@ -1,5 +1,5 @@
 /*!
- * jQuery QueryBuilder 8.2.0
+ * jQuery QueryBuilder 8.3.0
  * Copyright 2014-2018 Damien "Mistic" Sorel (http://www.strangeplanet.fr)
  * Licensed under MIT (http://opensource.org/licenses/MIT)
  */
@@ -6011,7 +6011,7 @@ QueryBuilder.extend(/** @lends module:plugins.UniqueFilter.prototype */ {
 
 
 /*!
- * jQuery QueryBuilder 8.2.0
+ * jQuery QueryBuilder 8.3.0
  * Locale: English (en)
  * Author: Damien "Mistic" Sorel, http://www.strangeplanet.fr
  * Licensed under MIT (http://opensource.org/licenses/MIT)
@@ -6029,22 +6029,22 @@ QueryBuilder.regional['en'] = {
     "OR": "OR"
   },
   "operators": {
-    "equal": "equal",
-    "not_equal": "not equal",
-    "in": "in",
-    "not_in": "not in",
-    "less": "less",
-    "less_or_equal": "less or equal",
-    "greater": "greater",
-    "greater_or_equal": "greater or equal",
-    "between": "between",
-    "not_between": "not between",
+    "equal": "is equal to",
+    "not_equal": "is not equal to",
+    "in": "having",
+    "not_in": "not having",
+    "less": "is less than",
+    "less_or_equal": "is less or equal to",
+    "greater": "is greater than",
+    "greater_or_equal": "is greater or equal to",
+    "between": "is between",
+    "not_between": "is not between",
     "begins_with": "begins with",
-    "not_begins_with": "doesn't begin with",
+    "not_begins_with": "doesn’t begin with",
     "contains": "contains",
-    "not_contains": "doesn't contain",
+    "not_contains": "doesn’t contain",
     "ends_with": "ends with",
-    "not_ends_with": "doesn't end with",
+    "not_ends_with": "doesn’t end with",
     "is_empty": "is empty",
     "is_not_empty": "is not empty",
     "is_null": "is null",
