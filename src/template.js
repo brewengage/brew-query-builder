@@ -1,7 +1,14 @@
 QueryBuilder.templates.group = '\
 <div id="{{= it.group_id }}" class="rules-group-container"> \
-  <div class="rules-group-header"> \
-    <div class="btn-group pull-right group-actions"> \
+  <div class="rules-group-header clearfix"> \
+  <div class="btn-group group-conditions pull-left"> \
+    {{~ it.conditions: condition }} \
+      <label class="btn btn-xs btn-info"> \
+        <input type="radio" name="{{= it.group_id }}_cond" value="{{= condition }}"> {{= it.translate("conditions", condition) }} \
+      </label> \
+    {{~}} \
+  </div> \
+    <div class="btn-group pull-left group-actions" style="margin-left: 8px;"> \
       <button type="button" class="btn btn-xs btn-primary" data-add="rule"> \
         <i class="material-icons">{{= it.icons.add_rule }}</i> <span class="btn-label">{{= it.translate("add_rule") }}</span> \
       </button> \
@@ -16,13 +23,6 @@ QueryBuilder.templates.group = '\
         </button> \
       {{?}} \
     </div> \
-    <div class="btn-group group-conditions"> \
-      {{~ it.conditions: condition }} \
-        <label class="btn btn-xs btn-info"> \
-          <input type="radio" name="{{= it.group_id }}_cond" value="{{= condition }}"> {{= it.translate("conditions", condition) }} \
-        </label> \
-      {{~}} \
-    </div> \
     {{? it.settings.display_errors }} \
       <div class="error-container"><i class="material-icons">{{= it.icons.error }}</i></div> \
     {{?}} \
@@ -34,19 +34,19 @@ QueryBuilder.templates.group = '\
 
 QueryBuilder.templates.rule = '\
 <div id="{{= it.rule_id }}" class="rule-container"> \
-  <div class="rule-header"> \
-    <div class="btn-group pull-right rule-actions"> \
-      <button type="button" class="btn btn-xs btn-danger" data-delete="rule"> \
-        <i class="material-icons">{{= it.icons.remove_rule }}</i> <span class="btn-label">{{= it.translate("delete_rule") }}</span> \
-      </button> \
-    </div> \
-  </div> \
   {{? it.settings.display_errors }} \
     <div class="error-container"><i class="material-icons">{{= it.icons.error }}</i></div> \
   {{?}} \
   <div class="rule-filter-container"></div> \
   <div class="rule-operator-container"></div> \
   <div class="rule-value-container"></div> \
+  <div class="rule-header" style="display:inline-block;"> \
+    <div class="btn-group rule-actions"> \
+      <button type="button" class="btn btn-xs btn-danger" data-delete="rule"> \
+        <i class="material-icons">{{= it.icons.remove_rule }}</i> <span class="btn-label"  style="display:none;">{{= it.translate("delete_rule") }}</span> \
+      </button> \
+    </div> \
+  </div> \
 </div>';
 
 QueryBuilder.templates.filterSelect = '\
@@ -267,7 +267,7 @@ QueryBuilder.prototype.getRuleInput = function(rule, value_id) {
                 h += '<label class="radio inline"' + c + '><input type="' + filter.input + '" name="' + name + '" value="' + key + '"> <span>' + val + '</span></label> ';
             });
             break;
-            
+
             case 'checkbox':
                 Utils.iterateOptions(filter.values, function(key, val) {
                     h += '<label class="checkbox inline"' + c + '><input type="' + filter.input + '" name="' + name + '" value="' + key + '"> <span>' + val + '</span></label> ';

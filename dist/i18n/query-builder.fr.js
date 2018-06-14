@@ -1,5 +1,5 @@
 /*!
- * jQuery QueryBuilder 8.3.0
+ * jQuery QueryBuilder 8.4.0
  * Locale: French (fr)
  * Author: Damien "Mistic" Sorel, http://www.strangeplanet.fr
  * Licensed under MIT (http://opensource.org/licenses/MIT)

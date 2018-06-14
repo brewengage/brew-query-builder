@@ -186,10 +186,10 @@ QueryBuilder.DEFAULTS = {
     ],
 
     icons: {
-        add_group:    'add_circle',
+        add_group:    'add',
         add_rule:     'add',
-        remove_group: 'close',
-        remove_rule:  'close',
+        remove_group: 'remove',
+        remove_rule:  'remove',
         error:        'warning'
     }
 };

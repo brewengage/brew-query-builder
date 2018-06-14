@@ -1,5 +1,5 @@
 /*!
- * jQuery QueryBuilder 8.3.0
+ * jQuery QueryBuilder 8.4.0
  * Locale: English (en)
  * Author: Damien "Mistic" Sorel, http://www.strangeplanet.fr
  * Licensed under MIT (http://opensource.org/licenses/MIT)
@@ -22,8 +22,8 @@ QueryBuilder.regional['en'] = {
   "__author": "Damien \"Mistic\" Sorel, http://www.strangeplanet.fr",
   "add_rule": "Add rule",
   "add_group": "Add group",
-  "delete_rule": "Delete",
-  "delete_group": "Delete",
+  "delete_rule": "Remove",
+  "delete_group": "Remove Group",
   "conditions": {
     "AND": "AND",
     "OR": "OR"

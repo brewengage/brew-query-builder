@@ -1,6 +1,6 @@
 {
-  "name": "brew-QueryBuilder",
-  "version": "8.3.0",
+  "name": "brewquery-builder",
+  "version": "8.4.0",
   "author": {
     "name": "Vedhagiri Prakasam",
     "email": "appmanager@brewengage.com"
